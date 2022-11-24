@@ -9,18 +9,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Data
-@RequiredArgsConstructor
-
+@NoArgsConstructor
 public class Customer {
 
     @Id
-    Long customerNumber;
+    int customerNumber;
     String firstName;
     String lastName;
     String phone;
     String email;
     Address address;
 
-
+    public Customer(String firstName, String lastName, String phone, String email, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
 }
  

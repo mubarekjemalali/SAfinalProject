@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -19,9 +20,11 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping("/addCustomer")
-    public void addCustomer (CustomerDTO customerDTO) {
+    @PostMapping("customers/addCustomer")
+    public ResponseEntity<String> addCustomer (CustomerDTO customerDTO) {
+        System.out.println("add customer method");
         customerService.addCustomer(customerDTO);
+        return ResponseEntity.ok("customer added successfully");
     }
 
     @PutMapping("/updateCustomer")
@@ -34,9 +37,10 @@ public class CustomerController {
         customerService.deleteCustomer(customerDTO);
     }
 
-    @GetMapping("/getCustomer")
-    public ResponseEntity<CustomerDTO> getCustomer (String customerId) {
-        CustomerDTO customerDTO = customerService.getCustomer(customerId);
+    @GetMapping("customers/getCustomer/{firstName}")
+    public ResponseEntity<Object> getCustomer (@PathVariable String firstName) {
+        System.out.println("get customer method");
+        CustomerDTO customerDTO = customerService.getCustomer(firstName);
         return ResponseEntity.ok(customerDTO);
     }
 

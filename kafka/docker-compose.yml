@@ -18,3 +18,12 @@ services:
       KAFKA_CREATE_TOPICS: "test:1:1"
     depends_on:
       - zookeeper
+
+
+  magic:
+    image: digitsy/kafka-magic
+    ports:
+      - "3030:80"
+    environment:
+      KMAGIC_ALLOW_TOPIC_DELETE: "true"
+      KMAGIC_ALLOW_SCHEMA_DELETE: "true"

@@ -9,5 +9,6 @@ public class KafkaListeners {
     @KafkaListener(topics = "bookAdded", groupId = "bookQueryService")
     public void listen(String message) {
         System.out.println("Received Messasge in group foo: " + message);
+        System.out.println("message recieved");
     }
 }

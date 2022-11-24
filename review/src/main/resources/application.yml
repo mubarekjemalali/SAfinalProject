@@ -1,6 +1,5 @@
-
 server:
-  port: 8095
+  port: 8097
 
 eureka:
   client:
@@ -9,7 +8,7 @@ eureka:
 
 spring:
   application:
-    name: BookCommandService
+    name: ReviewService
 
 data:
   mongodb:

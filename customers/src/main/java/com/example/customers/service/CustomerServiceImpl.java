@@ -13,7 +13,7 @@ import java.util.Optional;
 @Data
 @Service
 public class CustomerServiceImpl implements CustomerService {
-
+    @Autowired
     private ModelMapper modelMapper;
     @Autowired
     private CustomerRepo customerRepo;
@@ -43,10 +43,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO getCustomer(String customerId) {
+    public CustomerDTO getCustomer(String firstName) {
         //convert string to long
-        long id = Long.parseLong(customerId);
-        Optional<Customer> result = customerRepo.findById(id);
+//        long id = Long.parseLong(customerId);
+        Optional<Customer> result = customerRepo.findByFirstName(firstName);
         if (result.isPresent())
             return modelMapper.map(result.get(), CustomerDTO.class);
         else
