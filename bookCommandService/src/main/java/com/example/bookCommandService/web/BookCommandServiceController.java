@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @Data
@@ -17,9 +18,12 @@ public class BookCommandServiceController {
     @Autowired
     private BookService bookService;
 
-   @PostMapping("/addBook")
-    public ResponseEntity<String> addBook () {
-       return ResponseEntity.ok(bookService.addBook());
+   @PostMapping("books/addBook")
+    public ResponseEntity<String> addBook (@RequestBody BookDTO bookDTO) {
+        System.out.println("add book method");
+        bookService.addBook(bookDTO);
+        return ResponseEntity.ok("book added successfully");
+
 
 
     }

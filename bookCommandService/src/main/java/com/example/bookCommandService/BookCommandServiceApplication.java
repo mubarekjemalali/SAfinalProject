@@ -12,12 +12,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableKafka
-@RequiredArgsConstructor
 @EnableScheduling
 public class BookCommandServiceApplication {
 
 
-	BookService bookService;
 
 	@Bean
 	public ModelMapper modelMapper() {

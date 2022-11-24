@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Data
-@RequiredArgsConstructor
-public class BookServiceImpl implements BookService{
 
+public class BookServiceImpl implements BookService{
+    @Autowired
     private BookRepository bookRepository;
+    @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
     private KafkaTemplate<String, BookDTO> kafkaTemplate;
     @Override
-    public String addBook() {
+    public String addBook(BookDTO bookDTO) {
         System.out.println("before adding book");
-//        bookRepository.save(modelMapper.map(bookDTO, Book.class));
-        System.out.println("book added");
-        kafkaTemplate.send("bookAdded", new BookDTO());
+       bookRepository.save(modelMapper.map(bookDTO, Book.class));
+        kafkaTemplate.send("bookAdded", bookDTO);
 
         return "book added";
     }

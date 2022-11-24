@@ -19,6 +19,7 @@ public class BookQueryServiceImpl implements BookQueryService {
 
     @Override
     public void addBook(BookDTO bookDTO) {
+        System.out.println("before adding book, got it from kafka");
         bookRepository.save(modelMapper.map(bookDTO, Book.class));
     }
 

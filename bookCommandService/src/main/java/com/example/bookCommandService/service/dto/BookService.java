@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface BookService {
-    String addBook();
+    String addBook(BookDTO bookDTO);
 
     void updateBook(BookDTO bookDTO);
 

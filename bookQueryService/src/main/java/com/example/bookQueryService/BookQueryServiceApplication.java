@@ -7,11 +7,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableKafka
-@EnableFeignClients
 @EnableDiscoveryClient
+@EnableScheduling
 public class BookQueryServiceApplication {
 	@Bean
 	public ModelMapper modelMapper() {
